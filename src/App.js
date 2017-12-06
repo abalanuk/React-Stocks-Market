@@ -19,9 +19,7 @@ class App extends PureComponent {
       return (
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
           <Provider store={store}>
-              <div>
-                  <AssetsTable/>
-              </div>
+              <AssetsTable/>
           </Provider>
       </MuiThemeProvider>
     )
