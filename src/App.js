@@ -1,19 +1,31 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
+//import PropTypes from 'prop-types'
 import './App.css'
+import {Provider} from 'react-redux'
+import {createStore} from 'redux'
+import CombinedReducers from './redux/combinedReducers'
+import initialState from './redux/initialState'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+import { MuiThemeProvider } from 'material-ui/styles'
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+
+import AssetsTable from './AssetsTable'
+
+const store = createStore(CombinedReducers, initialState)
+
+class App extends PureComponent {
+    render() {
+      return (
+      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+          <Provider store={store}>
+              <div>
+                  <AssetsTable/>
+              </div>
+          </Provider>
+      </MuiThemeProvider>
     )
-  }
+    }
 }
 
 export default App

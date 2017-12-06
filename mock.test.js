@@ -1,4 +1,4 @@
-import { mock } from './mock.js';
+import { mock } from './src/mock.js';
 
 describe('See mock at console log', () => {
 	it('Should output', (done) => {
